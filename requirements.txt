@@ -4,7 +4,7 @@ notebook
 numpy
 matplotlib
 python-box==6.0.2
-pyYAML
+pyYAML       
 tqdm
 ensure==1.0.2
 joblib

@@ -4,18 +4,18 @@ from src.mlproject import logger
 from ensure import ensure_annotations
 import json
 import joblib
-from box import Configbox
+from box import ConfigBox
 from pathlib import Path
 from typing import Any
 from box.exceptions import BoxValueError
 
 @ensure_annotations
-def read_yaml(path_to_yaml:Path) -> Configbox:
+def read_yaml(path_to_yaml:Path) -> ConfigBox:
     try:
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
             logger.info(f"yaml_file : {path_to_yaml} loaded successfully")
-            return Configbox(content)
+            return ConfigBox(content)
         
     except BoxValueError:
         raise ValueError("yaml file is empty")
@@ -37,13 +37,13 @@ def save_json(path:Path,data:dict):
     logger.info(f"JSON file saved at {path}")
 
 @ensure_annotations
-def load_json(path:Path) -> Configbox:
+def load_json(path:Path) -> ConfigBox:
 
     with open(path) as f:
         content = json.load(f)
 
     logger.info(f"json file loaded from : {path}")
-    return Configbox(content)
+    return ConfigBox(content)
 
 
 @ensure_annotations
