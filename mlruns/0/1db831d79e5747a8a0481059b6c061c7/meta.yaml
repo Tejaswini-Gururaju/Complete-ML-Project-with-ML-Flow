@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/ML_project_with_MLFlow/Complete-ML-Project-with-ML-Flow/mlruns/0/1db831d79e5747a8a0481059b6c061c7/artifacts
+end_time: 1710253638583
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1db831d79e5747a8a0481059b6c061c7
+run_name: grandiose-trout-397
+run_uuid: 1db831d79e5747a8a0481059b6c061c7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710253624972
+status: 3
+tags: []
+user_id: admin

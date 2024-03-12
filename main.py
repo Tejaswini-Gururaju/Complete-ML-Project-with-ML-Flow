@@ -64,3 +64,22 @@ try:
 except Exception as e:     
         logger.exception(e)
         raise e
+
+
+from src.mlproject.config.configuration import ConfigurationManager4
+from src.mlproject.components.Model_Evaluation import ModelEvaluation
+from src.mlproject.pipeline.stage_05_model_evaluation import ModelEvaluationPipeline
+
+
+STAGE_NAME="Model Evaluation stage"
+
+try:
+    
+        logger.info(f">>>>>>>>> stage {STAGE_NAME} started <<<<<<<<<")
+        data_validation = ModelEvaluationPipeline()
+        data_validation.main()
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<< \n\nx==========")
+        
+except Exception as e:     
+        logger.exception(e)
+        raise e
