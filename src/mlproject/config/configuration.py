@@ -61,3 +61,70 @@ class ConfigurationManager1:
         )
 
         return data_validation_config
+    
+
+from src.mlproject.entity.config_entity import DataTransformationConfig
+
+
+class ConfigurationManager2:
+    def __init__(
+            self,
+            # config_filepath = CONFIG_FILE_PATH,
+            params_filepath = PARAMS_FILE_PATH,
+            schema_filepath = SCHEMA_FILE_PATH):
+        self.config = read_yaml(Path("config/config.yaml"))
+        self.params = read_yaml(params_filepath)
+        self.schema = read_yaml(schema_filepath)
+
+        create_directories([self.config.artifacts_root])
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        # logger.info("data taken ")
+        create_directories([config.root_dir])
+        # logger.info(" sample log")
+
+        data_transformation_config=DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+        )
+
+        return data_transformation_config
+
+
+from src.mlproject.entity.config_entity import ModelTrainerConfig
+
+from src.mlproject.constants import *
+from src.mlproject.utils.common import read_yaml, create_directories
+
+class ConfigurationManager3:
+    def __init__(
+            self,
+            # config_filepath = CONFIG_FILE_PATH,
+            params_filepath = PARAMS_FILE_PATH,
+            schema_filepath = SCHEMA_FILE_PATH):
+        self.config = read_yaml(Path("config/config.yaml"))
+        self.params = read_yaml(params_filepath)
+        self.schema = read_yaml(schema_filepath)
+
+        create_directories([self.config.artifacts_root])
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.ElasticNet
+        schema = self.schema.TARGET_COLUMN
+        create_directories([config.root_dir])
+
+        model_trainer_config= ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path=config.train_data_path,
+            test_data_path=config.test_data_path,
+            model_name=config.model_name,
+            alpha=params.alpha,
+            l1_ratio=params.l1_ratio,
+            target_column=schema.name
+
+        )
+
+        return model_trainer_config
+
